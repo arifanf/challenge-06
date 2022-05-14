@@ -13,7 +13,7 @@ const Dashboard = () => {
         <Sidebar/>
         <div className="main">
           <h1 className="title">Welcome to Admin Page</h1>
-          <Link to="/login" className="btn-logout">Logout</Link>
+          <Link to="/login" className="btn-logout rounded-lg">Logout</Link>
         </div>
       </Section>
     </DashboardPage>

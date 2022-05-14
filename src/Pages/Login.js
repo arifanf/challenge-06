@@ -26,7 +26,9 @@ const Login = () => {
     // proses login
     const postData = {
       email: data.user_email,
-      password: data.user_password
+      password: data.user_password,
+      firstname: data.user_firstname,
+      lastname: data.user_lastname
     }
 
     axios.post('http://localhost:4000/login', postData)
@@ -39,7 +41,7 @@ const Login = () => {
           const user = jwtDecode(res.data.accessToken)
           axios.get(`http://localhost:4000/users/${user.sub}`)
           .then( res => {
-            dispatch( userSlice.actions.addUser({userData: res.data}) )
+            dispatch( userSlice.actions.addUser( {userData: res.data}) )
             if (res.data.isAdmin) {
               navigate('/dashboard')
             } else {

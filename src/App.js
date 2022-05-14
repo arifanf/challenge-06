@@ -17,7 +17,7 @@ import ProtectedRoute from './Components/HOC/ProtectedRoute'
 
 const getUser = async () => {
   try {
-    const token = localStorage.getItem('minishopAccessToken')
+    const token = localStorage.getItem('bcrUserAccessToken')
     const userData = jwtDecode(token)
     const res = await axios.get(`http://localhost:4000/users/${userData.sub}`)
     return {
@@ -54,17 +54,17 @@ function App() {
                   <Route path="/" element={<Layout/>}>
                     {/* ALL */}
                     <Route index element={<Home/>}/>
-                    <Route path="Logout" element={<Logout/>}/>
+                    <Route path="logout" element={<Logout/>}/>
 
                     {/* PUBLIC ONLY */}
                     <Route path="/" element={<UnprotectedRoute />}>
-                      <Route path="Login" element={<Login/>}/>
-                      <Route path="Register" element={<Register/>}/>
+                      <Route path="login" element={<Login/>}/>
+                      <Route path="register" element={<Register/>}/>
+                      <Route path="dashboard" element={<Dashboard/>}/>
                     </Route>
 
                     {/* PROTECTED */}
                     <Route path="/" element={<ProtectedRoute />}>
-                      <Route path="Dashboard" element={<Dashboard/>}/>
                     </Route>
                   </Route>
                 </Routes>

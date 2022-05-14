@@ -6,13 +6,13 @@ const ProtectedRoute = () => {
 
     const user = useSelector( store => store.user.data )
 
-    if ( user.isAdmin === true  ) {
+    if ( user !== null ) {
         return (
-            <Navigate to="/dashboard" />
+            <Outlet />
         )
     } else {
         return (
-            <Outlet />
+            <Navigate to="/" />
         )
     }
   
